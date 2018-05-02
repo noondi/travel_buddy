@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+</head>
+<body>
+    <!-- Report working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <a href="/travels">Home</a>|<a href="/logout">Log out</a></p>
+    <h3>{{ trip.destination }}</h3>
+    <p>Planned by: {{trip.planner.first_name}} {{trip.planner.last_name}}</p>
+    <p>Description: {{trip.description}}</p>
+    <p>Travel Date From: {{ trip.travelDateFrom }}</p>
+    <p>Travel Date To: {{ trip.travelDateTo }}</p>
+
+
+    <h3>Other users' joining the trip:</h3>
+    {% if trip.travelers %}
+        <ul>
+            {% for t in trip.travelers.all %}
+                <li>{{ t.first_name }} {{ t.last_name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}   
+</body>
+</html>

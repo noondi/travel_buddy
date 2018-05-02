@@ -1,0 +1,39 @@
+welcome to my blog
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+      
+    <h3>Register here</h3>
+        <form action="/register" method="POST">
+            {% csrf_token %}          
+            First name: <input type="text" name="first_name" placeholder="first name"><br>
+            Last name: <input type="text" name="last_name" placeholder="last name"><br>
+            Email: <input type="email" name="email" placeholder="email"><br>
+            Password: <input type="text" name="password" placeholder="password"><br>
+            Confirm Password: <input type="text" name="confpw" placeholder="retype your password"><br>
+            <input type="submit" value="Register">
+        </form>
+      
+    <h3>Login here</h3>        
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            Email: <input type="text" name="email" placeholder="email"><br>
+            Password: <input type="text" name="password" placeholder="password"><br>
+            <input type="submit" value="Log In">
+        </form>   
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {%endfor%}
+     {% endif %}      
+    
+</body>
+</html>

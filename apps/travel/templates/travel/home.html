@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel Dashboard</title>
+</head>
+<body>
+    <p>Hello, {{ request.session.first_name}}! | <a href="/logout">Log out</a></p>
+    <p>Your trip schedules</p>
+
+    <table> 
+        <!-- tr represents rows
+        th represents column header
+        td represents data inside those columns -->
+        <tr>
+            <th>Destination</th> 
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+        </tr>
+        {% if current_user.plannedTrips %}
+            {% for t in current_user.plannedTrips.all %}
+        <tr>
+            <td><a href="/travels/destination/{{ t.id }}">{{ t.destination }}</a></td>
+            <td>{{ t.travelDateFrom }}</td>
+            <td>{{ t.travelDateTo }}</td>
+            <td>{{ t.description }}</td>
+        </tr>
+            {% endfor %}
+            {% for t in current_user.allTrips.all %}
+        <tr>
+            <td><a href="/travels/destination/{{ t.id }}">{{ t.destination }}</a></td>
+            <td>{{ t.travelDateFrom }}</td>
+            <td>{{ t.travelDateTo }}</td>
+            <td>{{ t.description }}</td>
+        </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+
+    <p>Other Users' Trips</p>
+
+    <table> 
+        <tr>
+            <th>Name</th> 
+            <th>Destination</th> 
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do you want to join?</th>
+        </tr>
+        {% if other_users.all %}
+            {% for traveler in other_users.all %}
+                {% for t in traveler.plannedTrips.all %}
+        <tr>
+            <td>{{t.planner.first_name}} {{t.planner.last_name}}</td>
+            <td><a href="/travels/destination/{{ t.id }}">{{ t.destination }}</a></td>
+            <td>{{ t.travelDateFrom }}</td>
+            <td>{{ t.travelDateTo }}</td>
+            <td><a href="/travels/join/{{ t.id }}">Join</a></td>
+        </tr>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </table>
+
+
+    {% if messages %}
+    <ul>        
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <br> <br>
+    <a href="/travels/add">Add Travel Plan</a> |
+    <a href="/travels/showAttack">Go to CSRF attack demo</a>
+</body>
+</html>

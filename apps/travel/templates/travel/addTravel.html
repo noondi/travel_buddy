@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Add Plan</title>
+</head>
+<body>
+    <!-- <p>I am not dumb but I am dumb, I am glad I AM DUMB!!! because then I can be smarter!?</p>  -->
+    <a href="/travels">Home</a>|<a href="/logout">Log out</a></p>
+    <h3>Add a trip</h3>
+    <form action="/travels/tripAdd" method="POST">
+        {% csrf_token %}          
+        Destination: <input type="text" name="destination" placeholder="Destination"><br>
+        Description: <input type="text" name="description" placeholder="Description"><br>
+        Travel Date From: <input type="date" name="travelDateFrom" placeholder="Travel Date From"><br>
+        Travel Date to: <input type="date" name="travelDateTo" placeholder="Travel Date To"><br>       
+        <input type="submit" value="Add">
+    </form>
+    {% if messages %}
+    <ul>
+        <li>Correct reported errors below and try again!</li>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</body>
+</html>

